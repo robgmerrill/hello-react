@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- REACT LIBRARY -->
+  <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+  <!-- REACT DOM LIBRARY -->
+  <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+  <!-- BABEL LIBRARY -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+  <title>Class Components</title>
+</head>
+<body>
+  <div id="app">Render React Here</div>
+
+    <script type="text/babel">
+
+    // Challenge - Create a complex Shapes component passing into it Circle, Square and Rectangle components
+    class Shapes extends React.Component {
+      render() {
+        return(
+          <div>
+            <Circle/>
+            <Square/>
+            <Rectangle/>
+          </div>
+        );
+      }
+    }
+
+    class Circle extends React.Component {
+      render() {
+        var circleStyle = {
+          width: 100,
+        	height: 100,
+        	background: "red",
+        	borderRadius: "50%"
+        }
+        return(
+          <h1 style={circleStyle}>Circle</h1>
+        );
+      }
+    }
+
+    class Square extends React.Component {
+      render() {
+        var squareStyle = {
+          width: 100,
+        	height: 100,
+        	background: "red"
+        }
+        return(
+          <h1 style={squareStyle}>Square</h1>
+        );
+      }
+    }
+
+    class Rectangle extends React.Component {
+      render() {
+        var rectangleStyle = {
+          width: 200,
+        	height: 100,
+        	background: "red"
+        }
+        return(
+          <h1 style={rectangleStyle}>Rectangle</h1>
+        );
+      }
+    }
+
+    // CHALLENGE
+    // CREATE CLASS COMPONENTS FOR CIRCLE SQUARE AND RECTANGLE
+    // RENDER TO THE DOM WITHIN A PARENT DIV TAG
+
+    ReactDOM.render(
+      // REACT WHAT, REACT WHERE
+      <Shapes/>,
+      document.getElementById("app")
+    );
+
+  </script>
+
+</body>
+</html>

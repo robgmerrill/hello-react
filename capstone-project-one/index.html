@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- REACT LIBRARY -->
+  <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+  <!-- REACT DOM LIBRARY -->
+  <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+  <!-- BABEL LIBRARY -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>FriendLy</title>
+</head>
+<body>
+  <div id="app">React has not rendered yet</div>
+
+  <script type="text/babel">
+
+    // FriendLy Complex Component
+    function FriendLy() {
+      var friendlyStyle = {
+        height: 300,
+        width: 200,
+        padding: 0,
+        backgroundColor: "#FFF",
+        WebkitFilter: "drop-shadow(0px 0px 5px #555)",
+        filter: "drop-shadow(0px 0px 5px #555)"
+      }
+      return(
+        <div style={friendlyStyle}>
+          <Avatar/>
+          <UserName/>
+          <GetConnected/>
+        </div>
+      );
+    }
+
+    // Avatar Component
+    function Avatar() {
+      var avatarStyle = {
+        marginLeft: 20,
+        marginTop: 20,
+        width: 150,
+        height: 150,
+        borderRadius: "50%"
+      }
+      return(
+        <img src="https://pbs.twimg.com/profile_images/699422966556168193/zUm4vhAo_400x400.jpg" alt="profile pic" style={avatarStyle}/>
+      );
+    }
+
+
+    // UserName Component
+    function UserName() {
+      var nameStyle = {
+        fontSize: 24,
+        fontFamily: "Arial, Helvetica, sans-serif",
+        margin: 20
+      }
+      return(
+        <h1 style={nameStyle}>Profile Name</h1>
+      );
+    }
+
+    // GetConnected Complex Component
+    function GetConnected() {
+      return(
+        <div>
+          <Like/>
+          <Share/>
+          <Add/>
+        </div>
+      );
+    }
+
+      var iconStyle = {
+        margin: 20
+      }
+
+      // Like Component
+      function Like() {
+        return(
+          <i className="fa fa-thumbs-o-up" aria-hidden="true" style={iconStyle}></i>
+        );
+      }
+
+      // Share Component
+      function Share() {
+        return(
+          <i className="fa fa-share" aria-hidden="true" style={iconStyle}></i>
+        );
+      }
+
+      // Add Component
+      function Add() {
+        return(
+          <i className="fa fa-users" aria-hidden="true" style={iconStyle}></i>
+        );
+      }
+
+    ReactDOM.render(
+      <FriendLy/>,
+      document.getElementById("app")
+    );
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!-- INSERT BOILER PLATE CODE -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- REACT LIBRARY -->
+  <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+  <!-- REACT DOM LIBRARY -->
+  <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+  <!-- BABEL LIBRARY -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+  <title>Class Components Props</title>
+</head>
+<body>
+
+  <!-- DESIGNATED LOCATION TO INSERT REACT CONTENT  -->
+  <div id="app">React has not rendered yet</div>
+
+  <!-- JAVASCRIPT -->
+  <script type="text/babel">
+
+    class PersonGreeting extends React.Component {
+      render() {
+        var personStyle = {
+          height: 300,
+          width: 300,
+          backgroundColor: this.props.color
+        }
+        return(
+          <div style={personStyle}>Hello, {this.props.name}!</div>
+        );
+      }
+    }
+
+    ReactDOM.render(
+      <div>
+        <PersonGreeting color="tomato" name="Jimmy"/>
+        <PersonGreeting color="blue" name="Billy"/>
+        <PersonGreeting color="green" name="Sarah"/>
+      </div>,
+      document.getElementById("app")
+    );
+
+  </script>
+
+</body>
+</html>

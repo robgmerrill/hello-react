@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- REACT LIBRARY -->
+  <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+  <!-- REACT DOM LIBRARY -->
+  <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+  <!-- BABEL LIBRARY -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>FriendLy</title>
+</head>
+<body>
+  <div id="app">React has not rendered yet</div>
+
+  <script type="text/babel">
+
+    // FriendLy Complex Component
+    function FriendLy(props) {
+      var friendlyStyle = {
+        display: 'inline-block',
+        margin: 20,
+        height: 300,
+        width: 200,
+        padding: 0,
+        backgroundColor: "#FFF",
+        WebkitFilter: "drop-shadow(0px 0px 5px #555)",
+        filter: "drop-shadow(0px 0px 5px #555)"
+      }
+      return(
+        <div style={friendlyStyle}>
+          <Avatar img={props.img}/>
+          <UserName name={props.name}/>
+          <GetConnected/>
+        </div>
+      );
+    }
+
+    // Avatar Component
+    function Avatar(props) {
+      var avatarStyle = {
+        marginLeft: 27,
+        marginTop: 20,
+        width: 150,
+        height: 150,
+        borderRadius: "50%"
+      }
+      return(
+        <img src={props.img} alt="profile pic" style={avatarStyle}/>
+      );
+    }
+
+
+    // UserName Component
+    function UserName(props) {
+      var nameStyle = {
+        fontSize: 24,
+        textAlign: "center",
+        fontFamily: "Arial, Helvetica, sans-serif",
+        margin: 20
+      }
+      return(
+        <h1 style={nameStyle}>{props.name}</h1>
+      );
+    }
+
+    // GetConnected Complex Component
+    function GetConnected() {
+      var getConnectedStyle = {
+        marginLeft: 15
+      }
+      return(
+        <div style={getConnectedStyle}>
+          <Like/>
+          <Share/>
+          <Add/>
+        </div>
+      );
+    }
+
+      var iconStyle = {
+        margin: 20
+      }
+
+      // Like Component
+      function Like() {
+        return(
+          <i className="fa fa-thumbs-o-up" aria-hidden="true" style={iconStyle}></i>
+        );
+      }
+
+      // Share Component
+      function Share() {
+        return(
+          <i className="fa fa-share" aria-hidden="true" style={iconStyle}></i>
+        );
+      }
+
+      // Add Component
+      function Add() {
+        return(
+          <i className="fa fa-users" aria-hidden="true" style={iconStyle}></i>
+        );
+      }
+
+    // Challenge - Mass produce individual FriendLy cards using props
+    // Challenge 1 - Use props to pass the name of the person from ReactDOM.render() method to parent FriendLy
+    // component to child UserName component
+    // Challenge 2 - Use props to pass the image URL from ReactDOM.render() method to parent FriendLy component
+    // to child Avatar component
+    // Challenge 3 - Mass produce individual FriendLy cards by providing props and values in our ReactDOM.render()
+    // method
+
+
+    ReactDOM.render(
+      <div>
+        <FriendLy
+        name="Rob"
+        img="https://pbs.twimg.com/profile_images/699422966556168193/zUm4vhAo.jpg"
+        />
+        <FriendLy
+        name="Charles"
+        img="https://static.pexels.com/photos/38630/bodybuilder-weight-training-stress-38630.jpeg"
+        />
+        <FriendLy
+        name='Alex'
+        img="https://static.pexels.com/photos/27411/pexels-photo-27411.jpg"
+        />
+        <FriendLy
+        name='Natalie'
+        img="https://static.pexels.com/photos/289701/pexels-photo-289701.jpeg"
+        />
+        <FriendLy
+        name='Jenny'
+        img="https://static.pexels.com/photos/195825/pexels-photo-195825.jpeg"
+        />
+        <FriendLy
+        name='Sarah'
+        img="https://static.pexels.com/photos/324658/pexels-photo-324658.jpeg"
+        />
+        <FriendLy
+        name='Josh'
+        img="https://static.pexels.com/photos/428339/pexels-photo-428339.jpeg"
+        />
+        <FriendLy
+        name='Kenny'
+        img="https://static.pexels.com/photos/175977/pexels-photo-175977.jpeg"
+        />
+        <FriendLy
+        name='John'
+        img="https://static.pexels.com/photos/45882/man-crazy-funny-dude-45882.jpeg"
+        />
+        <FriendLy
+        name='Alisha'
+        img="https://static.pexels.com/photos/390111/pexels-photo-390111.jpeg"
+        />
+      </div>,
+      document.getElementById("app")
+    );
+
+  </script>
+
+</body>
+</html>

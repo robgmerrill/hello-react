@@ -1,0 +1,67 @@
+<!-- INSERT BOILER PLATE CODE -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- REACT LIBRARY -->
+  <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+  <!-- REACT DOM LIBRARY -->
+  <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+  <!-- BABEL LIBRARY -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+  <title>Boiler Plate Code</title>
+</head>
+<body>
+
+  <!-- DESIGNATED LOCATION TO INSERT REACT CONTENT  -->
+  <div id="app">React has not rendered yet</div>
+
+  <!-- JAVASCRIPT -->
+  <script type="text/babel">
+
+    function FamilyList(props) {
+      var femaleSiblings = props.siblings.filter(function(person) {
+        return person.female;
+      }).map(function(person) {
+        return <div key={person.id}>{person.name}</div>;
+      });
+      // CHALLENGE - use filter and map to generate JSX for male siblings
+      var maleSiblings = props.siblings.filter(function(person) {
+        return person.female === false;
+      }).map(function(person) {
+        return <div key={person.id}>{person.name}</div>
+      });
+
+      return(
+        <div>
+          <h1>Female Siblings</h1>
+            <div>
+              {/*Render female siblings*/}
+              {femaleSiblings}
+            </div>
+            <hr/>
+          <h1>Male Siblings</h1>
+            <div>
+              {/*Render male siblings*/}
+              {maleSiblings}
+            </div>
+        </div>
+      );
+    }
+
+    var siblings = [{id: 1, name: 'Chris', female: false}, {id: 2, name: 'Jeff', female: false},
+                {id: 3, name: 'Julie', female: true}, {id: 4, name: 'Jessica', female: true}];
+
+    ReactDOM.render(
+      <FamilyList
+        siblings={siblings}
+      />,
+      document.getElementById("app")
+    );
+
+  </script>
+
+</body>
+</html>
