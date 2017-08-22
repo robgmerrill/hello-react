@@ -1,0 +1,108 @@
+<!-- INSERT BOILER PLATE CODE -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- REACT LIBRARY -->
+  <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+  <!-- REACT DOM LIBRARY -->
+  <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+  <!-- BABEL LIBRARY -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+  <title>Boiler Plate Code</title>
+</head>
+<body>
+
+  <!-- DESIGNATED LOCATION TO INSERT REACT CONTENT  -->
+  <div id="app">React has not rendered yet</div>
+
+  <!-- JAVASCRIPT -->
+  <script type="text/babel">
+
+    // class GuessAge extends React.Component {
+    //   constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //       age: 'Guess My Age'
+    //     };
+    //     this.onButtonClick = this.onButtonClick.bind(this)
+    //   }
+    //   onButtonClick() {
+    //     this.setState({
+    //       age: '37'
+    //     });
+    //   }
+    //   render() {
+    //     return(
+    //       <div>
+    //         <h1>Guessing Game</h1>
+    //         <h2>{this.state.age}</h2>
+    //         <button onClick={this.onButtonClick}>reveal my age</button>
+    //       </div>
+    //     );
+    //   }
+    // }
+
+    // BIND IN CONSTRUCTOR
+
+    // class GuessAge extends React.Component {
+    //   constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //       age: 'Guess My Age'
+    //     };
+    //   }
+    //   onButtonClick() {
+    //     this.setState({
+    //       age: '37'
+    //     });
+    //   }
+    //   render() {
+    //     return(
+    //       <div>
+    //         <h1>Guessing Game</h1>
+    //         <h2>{this.state.age}</h2>
+    //         <button onClick={this.onButtonClick.bind(this)}>reveal my age</button>
+    //       </div>
+    //     );
+    //   }
+    // }
+
+    // USE ARROW FUNCTION IN RENDER
+
+    class GuessAge extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = {
+          age: 'Guess My Age'
+        };
+      }
+      onButtonClick() {
+        this.setState({
+          age: '37'
+        });
+      }
+      render() {
+        return(
+          <div>
+            <h1>Guessing Game</h1>
+            <h2>{this.state.age}</h2>
+            <button onClick={() => this.onButtonClick()}>reveal my age</button>
+          </div>
+        );
+      }
+    }
+
+
+
+    ReactDOM.render(
+      <GuessAge/>,
+      document.getElementById("app")
+    );
+
+  </script>
+
+</body>
+</html>
