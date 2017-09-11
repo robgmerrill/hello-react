@@ -11,6 +11,8 @@
   <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
   <!-- BABEL LIBRARY -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+  <!-- AXIOS CDN -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <title>Boiler Plate Code</title>
 </head>
 <body>
@@ -21,62 +23,54 @@
   <!-- JAVASCRIPT -->
   <script type="text/babel">
 
-    // class GuessAge extends React.Component {
-    //   constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //       age: 'Guess My Age'
-    //     };
-    //     this.onButtonClick = this.onButtonClick.bind(this)
-    //   }
-    //   onButtonClick() {
-    //     this.setState({
-    //       age: '37'
-    //     });
-    //   }
-    //   render() {
-    //     return(
-    //       <div>
-    //         <h1>Guessing Game</h1>
-    //         <h2>{this.state.age}</h2>
-    //         <button onClick={this.onButtonClick}>reveal my age</button>
-    //       </div>
-    //     );
-    //   }
-    // }
-
-    // BIND IN CONSTRUCTOR
-
-
-    // USE ARROW FUNCTION IN RENDER
-
-    class GuessAge extends React.Component {
+    class App extends React.Component {
       constructor(props) {
         super(props);
         this.state = {
-          age: 'Guess My Age'
+          items: []
         };
       }
-      onButtonClick() {
-        this.setState({
-          age: '37'
+
+      // componentDidMount() {
+      //   fetch('http://swapi.co/api/people/')
+      //   .then(response => response.json())
+      //   .then(responseData => {
+      //     this.setState({
+      //       items: responseData.results
+      //     });
+      //   })
+      //   .catch(error => {
+      //     console.log('Fetching and parsing data error', error);
+      //   });
+      // }
+
+      componentDidMount() {
+        axios.get('http://swapi.co/api/people/')
+        .then(response => {
+          this.setState({
+            items: response.data.results
+          })
+        })
+        .catch(error => {
+          console.log('Fetching and parsing data error', error)
         });
       }
+
       render() {
+        let items = this.state.items;
+        console.log(items);
         return(
           <div>
-            <h1>Guessing Game</h1>
-            <h2>{this.state.age}</h2>
-            <button onClick={() => this.onButtonClick()}>reveal my age</button>
+            {items.map(function(item) {
+              return <h4 key={item.name}>{item.name} has an eye color of {item.eye_color}</h4>
+            })}
           </div>
         );
       }
     }
 
-
-
     ReactDOM.render(
-      <GuessAge/>,
+      <App/>,
       document.getElementById("app")
     );
 

@@ -21,62 +21,48 @@
   <!-- JAVASCRIPT -->
   <script type="text/babel">
 
-    // class GuessAge extends React.Component {
-    //   constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //       age: 'Guess My Age'
-    //     };
-    //     this.onButtonClick = this.onButtonClick.bind(this)
-    //   }
-    //   onButtonClick() {
-    //     this.setState({
-    //       age: '37'
-    //     });
-    //   }
-    //   render() {
-    //     return(
-    //       <div>
-    //         <h1>Guessing Game</h1>
-    //         <h2>{this.state.age}</h2>
-    //         <button onClick={this.onButtonClick}>reveal my age</button>
-    //       </div>
-    //     );
-    //   }
-    // }
-
-    // BIND IN CONSTRUCTOR
-
-
-    // USE ARROW FUNCTION IN RENDER
-
-    class GuessAge extends React.Component {
+    class App extends React.Component {
       constructor(props) {
         super(props);
         this.state = {
-          age: 'Guess My Age'
+          items: []
         };
       }
-      onButtonClick() {
-        this.setState({
-          age: '37'
+
+      // componentDidMount
+      // most common use case: starting AJAX calls to load data for your component
+      // can call setState
+      componentDidMount() {
+        fetch('http://swapi.co/api/people/')
+        // .then(function(response) {
+        //   return response.json()
+        // })
+        .then(response => response.json())
+        .then(responseData => {
+          this.setState({
+            items: responseData.results
+          });
+        })
+        .catch(error => {
+          console.log('Fetching and parsing data error', error);
         });
       }
+
       render() {
+        let items = this.state.items;
+        console.log(items);
         return(
           <div>
-            <h1>Guessing Game</h1>
-            <h2>{this.state.age}</h2>
-            <button onClick={() => this.onButtonClick()}>reveal my age</button>
+            {items.map(function(item) {
+              return <h4 key={item.name}>{item.name} has an eye color of {item.eye_color}</h4>
+            })}
           </div>
         );
       }
     }
 
-
-
     ReactDOM.render(
-      <GuessAge/>,
+      <App/>,
       document.getElementById("app")
     );
 
